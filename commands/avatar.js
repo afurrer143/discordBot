@@ -12,10 +12,15 @@ module.exports = {
 
     async execute(interaction) {
         const user = interaction.options.getUser('target');
+        if (!user) {
+            return interaction.reply(`Your avatar: ${interaction.user.displayAvatarURL()}`)
+        }
         //wwanna make something sassy if you do the bot here. Mild problem of its hard code, so if i change bot name this breaks
-        // sumi bot name vari is client.user.username  
-        if (user.username === "Sumi Bot 3.0") return interaction.reply(`Why I am glad you like my profile pic so much, here it is for you: ${user.displayAvatarURL({ dynamic: true })}`);
+        if (user.username === interaction.client.user.username) 
+            return interaction.reply(`Why I am glad you like my profile pic so much, here it is for you: ${user.displayAvatarURL({ dynamic: true })}`);
+
         if (user) return interaction.reply(`${user.username}'s avatar: ${user.displayAvatarURL({ dynamic: true })}`);
-        return interaction.reply(`Your avatar: ${interaction.user.displayAvatarURL()}`);
+
+
     },
 }; 
