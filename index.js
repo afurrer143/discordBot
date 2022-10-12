@@ -7,8 +7,16 @@ const { Client, GatewayIntentBits, Collection, Partials,  messageLink, MessageFl
 
 //intents give the bots permission to get certain info from discord
 const client = new Client({ 
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMembers], 
-  partials: [Partials.Message, Partials.Channel, Partials.Reaction], 
+  intents: [
+    GatewayIntentBits.Guilds, 
+    GatewayIntentBits.MessageContent, 
+    GatewayIntentBits.GuildMessages, 
+    GatewayIntentBits.GuildMessageReactions, 
+    GatewayIntentBits.GuildMembers], 
+  partials: [
+    Partials.Message, 
+    Partials.Channel, 
+    Partials.Reaction], 
 });
 
 //Getting all the commands and files ending with .js
@@ -130,29 +138,19 @@ client.on('messageCreate', (message) => {
 //the emoji reasction stuff  temp
 
 
-// client.on('messageReactionAdd', async (reaction, user) => {
-// 	if (reaction.message.partial) {
-// 		try {
-// 			await reaction.message.fetch();
-// 		} catch (error) {
-// 			console.error('Something went wrong when fetching the message: ', error);
-// 		}
-// 	}
+client.on('messageReactionAdd', async (reaction, user) => {
+	if (reaction.message.partial) {
+		try {
+			await reaction.message.fetch();
+		} catch (error) {
+			console.error('Something went wrong when fetching the message: ', error);
+		}
+	}
 
-// 	console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
-// });
+	console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
+});
 
-// client.on('messageReactionRemove', async (reaction, user) => {
-// 	if (reaction.message.partial) {
-// 		try {
-// 			await reaction.message.fetch();
-// 		} catch (error) {
-// 			console.error('Something went wrong when fetching the message: ', error);
-// 		}
-// 	}
 
-// 	console.log(`${user.username} removed their "${reaction.emoji.name}" reaction.`);
-// });
 
 
 client.login(process.env.DISCORD_TOKEN_ENV);
