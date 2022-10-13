@@ -11,6 +11,6 @@ module.exports = {
   //      await interaction.reply("commands here");
   // }
   async execute(interaction) {
-    await interaction.reply("no");
+    await interaction.reply("no, do it yourself");
   },
 };
