@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { AttachmentBuilder, EmbedBuilder } = require('discord.js');
-let pray 
+
 // inside a command, event listener, etc.
 const thumbnail = new AttachmentBuilder('../DiscordBot/images/thumbnail.png');
 const file = new AttachmentBuilder('../DiscordBot/images/SleepCat.jpg');
