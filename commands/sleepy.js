@@ -3,8 +3,11 @@ const { AttachmentBuilder, EmbedBuilder } = require("discord.js");
 
 // inside a command,event listener, etc.
 const thumbnail = new AttachmentBuilder("../DiscordBot/images/thumbnail.png");
-const file = new AttachmentBuilder("../DiscordBot/images/SleepCat.jpg");
-const exampleEmbed = new EmbedBuilder()
+const sleepyCatImage = new AttachmentBuilder(
+  "../DiscordBot/images/SleepCat.jpg"
+);
+
+const sleepyEmbed = new EmbedBuilder()
   .setColor(0x0099ff)
   .setTitle("Sleepy Kitten")
   .setImage("attachment://SleepCat.jpg")
@@ -21,8 +24,8 @@ module.exports = {
     .setDescription("Post the sleepy cat"),
   async execute(interaction) {
     await interaction.reply({
-      embeds: [exampleEmbed],
-      files: [thumbnail, file],
+      embeds: [sleepyEmbed],
+      files: [thumbnail, sleepyCatImage],
     });
   },
 };
