@@ -15,7 +15,7 @@ module.exports = {
         if (!user) {
             return interaction.reply(`Your avatar: ${interaction.user.displayAvatarURL()}`)
         }
-        //wwanna make something sassy if you do the bot here. Mild problem of its hard code, so if i change bot name this breaks
+        //wanna make something sassy if you do the bot here. Mild problem of its hard code, so if i change bot name this breaks
         if (user.username === interaction.client.user.username) 
             return interaction.reply(`Why I am glad you like my profile pic so much, here it is for you: ${user.displayAvatarURL({ dynamic: true })}`);
 
