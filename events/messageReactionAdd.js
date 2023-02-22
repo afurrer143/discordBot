@@ -4,11 +4,14 @@ const reactionMessage = require("../reactionTest/reactionMessage");
 
 module.exports = {
   name: "messageReactionAdd",
-  async execute(reaction, user) {
-    if (reaction.message.partial) {
+  async execute(reaction, user, client) {
+
+    // partial message handler (aka message made before the bot was turned online)
+    if (reaction.partial) {
       // If the message this reaction belongs to was removed, the fetching might result in an API error which should be handled;
       try {
-        await reaction.message.fetch();
+        await reaction.fetch();
+        // so on partial message, it fetches it in that current state. so example when make a new reaction, it will fetch it before the reaction is there
       } catch (error) {
         if (error)
           console.error(
@@ -17,19 +20,23 @@ module.exports = {
           );
       }
       console.log(
-        `On a partial message, ${user.username} reacted with "${reaction.emoji.name}".`
+        `Reaction made a partial message.`
       );
-      //the if reaction.message.partial message partial ends here
-    } else {
-      // the happy path for a reaction made
+    }
+
+       // current id 1077698090695409834, is :uwucat: in main discord
+      // id 1077736591507865700 is :xdx: in bot testing server
+      // id 1015394637193674792 is :BurgerDog: in main discord
+
       console.log(`${user.username} reacted with "${reaction.emoji.name}".`)
-      if (reaction.emoji.name === 'xdx') {
-        reactionPin.execute(reaction)
+
+      if (reaction.emoji.id === '1077736591507865700') {
+        reactionPin.execute(reaction, client)
       }
+     
       if (reaction.emoji.id === '1030866603828588606') {
         reactionMessage.execute(reaction)
       }
-    }
   },
 };
 
