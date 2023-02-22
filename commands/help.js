@@ -10,7 +10,16 @@ module.exports = {
   //      await interaction.reply("commands here");
   // }
 
-  async execute(interaction) {
-    await interaction.reply("no, do it yourself.");
+  async execute(interaction, client) {
+    let commands = client.commands
+    let helpReturn = ""
+    commands.forEach(command => {
+      helpReturn += command.data.name + " : " + command.data.description + " \n"
+    });
+
+    console.log(helpReturn)
+
+
+    await interaction.reply(`My current commands are: \n \n${helpReturn}`);
   },
 };

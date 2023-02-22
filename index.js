@@ -52,7 +52,9 @@ for (const file of eventFiles) {
   if (event.once) {
     client.once(event.name, (...args) => event.execute(...args, commands));
   } else {
-    client.on(event.name, (...args) => event.execute(...args, commands));
+    // so when it isnt even.once it runs event with ...args and commands (for example intereaction create)... now i do not know what ..args is
+    // NOTE I CHANGED COMMAND TO CLIENT HERE
+    client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
 

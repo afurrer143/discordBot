@@ -6,6 +6,7 @@ const { Routes } = require("discord-api-types/v9");
 
 module.exports = {
     name: "ready",
+    // once sets it to only run one time (because event handler will see .once and do event.once)
     once: true,
     execute (client, commands) {
         console.log(`Logged in as ${client.user.tag}!`);

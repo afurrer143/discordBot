@@ -18,6 +18,7 @@ module.exports = {
       );
       //the if reaction.message.partial message partial ends here
     } else {
+      // the happy path for a reaction made
       console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
     }
   },
