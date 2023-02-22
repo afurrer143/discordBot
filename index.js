@@ -49,6 +49,7 @@ const eventFiles = fs
 for (const file of eventFiles) {
   const event = require(`./events/${file}`);
   //running things in events
+  // So client.commands is formatted differently than just normal commands..so for now just gonna pass it commands
   if (event.once) {
     client.once(event.name, (...args) => event.execute(...args, commands));
   } else {

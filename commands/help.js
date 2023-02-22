@@ -16,10 +16,7 @@ module.exports = {
     commands.forEach(command => {
       helpReturn += command.data.name + " : " + command.data.description + " \n"
     });
-
-    console.log(helpReturn)
-
-
+    
     await interaction.reply(`My current commands are: \n \n${helpReturn}`);
   },
 };

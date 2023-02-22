@@ -7,22 +7,28 @@ const sleepyCatImage = new AttachmentBuilder(
   "../DiscordBot/images/SleepCat.jpg"
 );
 
-const sleepyEmbed = new EmbedBuilder()
-  .setColor(0x0099ff)
-  .setTitle("Sleepy Kitten")
-  .setImage("attachment://SleepCat.jpg")
-  .setTimestamp()
-  .setFooter({
-    text: `He do be sleeping`,
-    iconURL: "attachment://thumbnail.png",
-  });
 
 //the execute slash command plus its info
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("sleepy")
-    .setDescription("Post the sleepy cat"),
+  .setName("sleepy")
+  .setDescription("Post the sleepy cat"),
   async execute(interaction) {
+
+    const sleepyEmbed = new EmbedBuilder()
+      .setColor(0x0099ff)
+      .setTitle("Sleepy Kitten")
+      .setImage("attachment://SleepCat.jpg")
+      .setTimestamp()
+      .setAuthor({
+        iconURL: interaction.user.displayAvatarURL(),
+        name: interaction.user.tag
+    })
+      .setFooter({
+        text: `He do be sleeping`,
+        iconURL: "attachment://thumbnail.png",
+      });
+      
     await interaction.reply({
       embeds: [sleepyEmbed],
       files: [thumbnail, sleepyCatImage],

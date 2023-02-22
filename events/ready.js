@@ -19,12 +19,14 @@ module.exports = {
         }).setToken(process.env.DISCORD_TOKEN_ENV);
         (async () => {
             try {
+              // this would set bot globally on all servers it is in
               if (process.env.ENV === "production") {
                 await rest.put(Routes.applicationCommands(CLIENT_ID), {
                   body: commands
                 });
                 console.log("Sucessfully register commands globally")
               } else {
+                // since this takes guild ID, the bot will only run in that one server.
                   await rest.put(Routes.applicationGuildCommands(CLIENT_ID, process.env.GUILD_ID), {
                     body: commands
                   });
