@@ -18,7 +18,7 @@ module.exports = {
     // with the emojis.cache the bot could have access to an emoji in 1 server, and use it anywhere...but i can not get it to work, It seems to not be able to find the emoji
     // const emoji1 = interaction.client.emojis.cache.get('1077736624034689154')
 
-    const emoji = message.guild.emojis.cache.find(emoji => emoji.name === 'xdx');
+    const emoji = message.guild.emojis.cache.find(emoji => emoji.id === '1077736591507865700');
 
     message.react(emoji);
   },

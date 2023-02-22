@@ -1,4 +1,7 @@
-//only works once. Stuck in loop?
+const reactionPin = require("../reactionTest/reactionPin");
+const reactionMessage = require("../reactionTest/reactionMessage");
+
+
 module.exports = {
   name: "messageReactionAdd",
   async execute(reaction, user) {
@@ -19,7 +22,13 @@ module.exports = {
       //the if reaction.message.partial message partial ends here
     } else {
       // the happy path for a reaction made
-      console.log(`${user.username} reacted with "${reaction.emoji.name}".`);
+      console.log(`${user.username} reacted with "${reaction.emoji.name}".`)
+      if (reaction.emoji.name === 'xdx') {
+        reactionPin.execute(reaction)
+      }
+      if (reaction.emoji.id === '1030866603828588606') {
+        reactionMessage.execute(reaction)
+      }
     }
   },
 };
