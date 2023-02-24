@@ -15,7 +15,7 @@ Current Commands:
 
 1. Clone this repo onto your local machine
 2. Create a new Discord application and add a bot user to it. Refer to the [Discord API documentation](https://discord.com/developers/docs/intro) for detailed instructions.
-3. Copy the bot token from the Discord developer portal and paste it into the `config.json` file.
+3. Create a `.env` file in root folder and then copy the bot token from the Discord developer portal and paste it into the `.env` file with a variable called `DISCORD_TOKEN_ENV`.
 4. Invite the bot to the server of your choosing
 5. One your IDE run `npm install` and then `npm run dev` to start
 
