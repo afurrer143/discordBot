@@ -20,6 +20,7 @@ module.exports = {
         (async () => {
             try {
               // this would set bot globally on all servers it is in
+              // I do not know how to even run this part honestly
               if (process.env.ENV === "production") {
                 await rest.put(Routes.applicationCommands(CLIENT_ID), {
                   body: commands
