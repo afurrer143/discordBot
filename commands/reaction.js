@@ -5,21 +5,27 @@ module.exports = {
     .setName("reaction")
     .setDescription("reaction testing"),
 
-  async execute(interaction) {
+  async execute(interaction, client) {
     const message = await interaction.reply({
       content: "xdx!",
       fetchReply: true,
     });
-    // const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === 'xdx');
-    // message.react(reactionEmoji);
 
-    // I do not know why, but I can not pass client here, I can however get client from interaction (rememer client means my bot)
+    // finds emoji from any server bot is in
+    let foundEmoji;
+    let emojiId = '1077736591507865700'
 
-    // with the emojis.cache the bot could have access to an emoji in 1 server, and use it anywhere...but i can not get it to work, It seems to not be able to find the emoji
-    // const emoji1 = interaction.client.emojis.cache.get('1077736624034689154')
+    client.guilds.cache.forEach((guild) => {
+      const emoji = guild.emojis.cache.find((emoji) => emoji.id === emojiId);
+      if (emoji) {
+        foundEmoji = emoji;
+        return;
+      }
+    });
 
-    const emoji = message.guild.emojis.cache.find(emoji => emoji.id === '1077736591507865700');
+    // finds emoji in that server
+    // const emoji = interaction.client.guilds.cache.emojis.find(emoji => emoji.id === '1077736591507865700');
 
-    message.react(emoji);
+    message.react(foundEmoji);
   },
 };
